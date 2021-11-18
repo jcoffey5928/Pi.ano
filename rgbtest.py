@@ -1,76 +1,28 @@
-#libraries
-import RPi.GPIO as GPIO
+from gpiozero import LED
 from time import sleep
-#disable warnings (optional)
-GPIO.setwarnings(False)
-#Select GPIO Mode
-GPIO.setmode(GPIO.BCM)
-#set red,green and blue pins
-redPin = 12
-greenPin = 19
-bluePin = 13
-#set pins as outputs
-GPIO.setup(redPin,GPIO.OUT)
-GPIO.setup(greenPin,GPIO.OUT)
-GPIO.setup(bluePin,GPIO.OUT)
 
-def turnOff():
-    GPIO.output(redPin,GPIO.HIGH)
-    GPIO.output(greenPin,GPIO.HIGH)
-    GPIO.output(bluePin,GPIO.HIGH)
-    
-def white():
-    GPIO.output(redPin,GPIO.LOW)
-    GPIO.output(greenPin,GPIO.LOW)
-    GPIO.output(bluePin,GPIO.LOW)
-    
-def red():
-    GPIO.output(redPin,GPIO.LOW)
-    GPIO.output(greenPin,GPIO.HIGH)
-    GPIO.output(bluePin,GPIO.HIGH)
+red = LED(12)
+green = LED(19)
+blue = LED(13)
 
-def green():
-    GPIO.output(redPin,GPIO.HIGH)
-    GPIO.output(greenPin,GPIO.LOW)
-    GPIO.output(bluePin,GPIO.HIGH)
-    
-def blue():
-    GPIO.output(redPin,GPIO.HIGH)
-    GPIO.output(greenPin,GPIO.HIGH)
-    GPIO.output(bluePin,GPIO.LOW)
-    
-def yellow():
-    GPIO.output(redPin,GPIO.LOW)
-    GPIO.output(greenPin,GPIO.LOW)
-    GPIO.output(bluePin,GPIO.HIGH)
-    
 def purple():
-    GPIO.output(redPin,GPIO.LOW)
-    GPIO.output(greenPin,GPIO.HIGH)
-    GPIO.output(bluePin,GPIO.LOW)
-    
-def lightBlue():
-    GPIO.output(redPin,GPIO.HIGH)
-    GPIO.output(greenPin,GPIO.LOW)
-    GPIO.output(bluePin,GPIO.LOW)
-    
-try:
-    while True:
-        turnOff()
-        sleep(1) #1second
-        white()
-        sleep(1)
-        red()
-        sleep(1)
-        green()
-        sleep(1)
-        blue()
-        sleep(1)
-        yellow()
-        sleep(1)
-        purple()
-        sleep(1)
-        lightBlue()
-        sleep(1)
-except KeyboardInterrupt:
-    GPIO.cleanup()
+    red.on()
+    green.off()
+    blue.on()
+
+def yellow():
+    red.on()
+    green.on()
+    blue.off()
+
+def cyan():
+    red.off()
+    green.on()
+    blue.on()
+
+purple()
+sleep(1)
+yellow()
+sleep(1)
+cyan()
+sleep(1)
