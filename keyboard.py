@@ -4,12 +4,10 @@
 #Developer: Jonathan Coffey
 
 #from gpiozero import RGBLED
-#from gpiozero import Button
-#from gpiozero import Buzzer
 #from time import sleep
 
 class Keyboard:
-    keyColors = {'C5': 'GREEN', 'D5': 'RED', 'E5': 'ORANGE', 'F5': 'PINK', 'G5': 'PURPLE'}
+    KEY_COLORS = {'C5': 'GREEN', 'D5': 'RED', 'E5': 'ORANGE', 'F5': 'PINK', 'G5': 'PURPLE'}
     keyPlayed = None
 
     #led = RGBLED(2, 3, 4)

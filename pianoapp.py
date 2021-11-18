@@ -2,6 +2,7 @@ from gpiozero import TonalBuzzer
 from songparser import SongParser
 from songcontroller import SongController
 from song import Song
+from light import Light
 from time import sleep
 import os
 
@@ -10,6 +11,7 @@ class PianoApp:
         self.songList = []
         self.controller = None
         self.buzzer = TonalBuzzer(2)
+        self.light = Light()
 
     def run(self):
         self.gatherFiles()
@@ -31,6 +33,6 @@ class PianoApp:
     def playSongs(self):
         for song in self.songList:
             print(song.title, end ='')
-            song.play(self.buzzer)
+            song.play(self.buzzer, self.light)
             sleep(2)
             print()
