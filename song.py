@@ -6,13 +6,11 @@ from light import Light
 from keyboard import Keyboard
 
 class Song: 
-    def __init__(self, title, light):
+    def __init__(self, title):
         self.title = title
         self.notes = [] # Each element is an array of size 2. [0] = the note, [1] = pause time
-        self.light = light
-        self.light.turnOff()
 
-    def play(self, buzzer):
+    def play(self, buzzer, light):
         for i in self.notes:
             print(i[0])
             buzzer.play(Tone(i[0]))
@@ -20,6 +18,7 @@ class Song:
             sleep(float(i[1]))
             buzzer.stop()
             sleep(0.1)
+        light.turnOff()
 
     def playThreeNotes(self, pos):
         for i in self.notes[pos:pos+3]:

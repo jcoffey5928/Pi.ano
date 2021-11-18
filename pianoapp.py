@@ -12,6 +12,7 @@ class PianoApp:
         self.controller = None
         self.buzzer = TonalBuzzer(2)
         self.light = Light()
+        self.light.turnOff()
 
     def run(self):
         self.gatherFiles()
