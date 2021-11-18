@@ -14,6 +14,8 @@ class Light:
             self.led.color = Color(colStr)
             sleep(delay)
             self.turnOff()
+        elif (delay == 0):
+            self.led.color = Color(colStr)
         else:
             print(f'Invalid delay of {delay} seconds')
 
