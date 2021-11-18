@@ -12,16 +12,21 @@ class Song:
 
     def play(self, buzzer, light):
         for i in self.notes:
-            print(i[0])
-            buzzer.play(Tone(i[0]))
-            light.setColor(Keyboard.KEY_COLORS.get(i[0]), i[1])
-            sleep(float(i[1]))
+            note = i[0]
+            delay = i[1]
+            print(note)
+            buzzer.play(Tone(note))
+            light.onWithDelay(Keyboard.KEY_COLORS.get(note), float(delay))
+            light.turnOff()
+            sleep(float(delay))
             buzzer.stop()
             sleep(0.1)
         light.turnOff()
 
     def playThreeNotes(self, pos):
         for i in self.notes[pos:pos+3]:
-            print(i[0])
-            sleep(float(i[1]))
+            note = i[0]
+            delay = i[1]
+            print(note)
+            sleep(float(delay))
 

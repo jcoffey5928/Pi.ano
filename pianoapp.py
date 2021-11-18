@@ -11,7 +11,7 @@ class PianoApp:
         self.songList = []
         self.controller = None
         self.buzzer = TonalBuzzer(2)
-        self.light = Light()
+        self.light = Light(12, 19, 13)
         self.light.turnOff()
 
     def run(self):
