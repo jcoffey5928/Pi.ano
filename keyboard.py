@@ -4,7 +4,7 @@
 #Developer: Jonathan Coffey
 
 class Keyboard:
-    KEY_COLORS = {'C5': 'GREEN', 'D5': 'RED', 'E5': 'ORANGE', 'F5': 'PINK', 'G5': 'PURPLE'}
+    KEY_COLORS = {'C5': 'green', 'D5': 'red', 'E5': 'orange', 'F5': 'pink', 'G5': 'purple'}
     keyPlayed = None
     
     @staticmethod
