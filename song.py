@@ -14,7 +14,7 @@ class Song:
         for i in self.notes:
             print(i[0])
             buzzer.play(Tone(i[0]))
-            self.light.setColor(Keyboard.KEY_COLORS.get(i[0]), i[1])
+            self.light.setColor(Keyboard.KEY_COLORS.get(i[0], i[1]))
             sleep(float(i[1]))
             buzzer.stop()
             sleep(0.1)
