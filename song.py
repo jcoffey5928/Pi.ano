@@ -17,9 +17,9 @@ class Song:
             print(note)
             buzzer.play(Tone(note))
             light.onWithDelay(Keyboard.KEY_COLORS.get(note), float(delay))
-            light.turnOff()
             sleep(float(delay))
-            buzzer.stop()
+            light.turnOff()   
+            buzzer.stop()  
             sleep(0.1)
         light.turnOff()
 
