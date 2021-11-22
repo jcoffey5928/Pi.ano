@@ -16,11 +16,11 @@ class Gui:
 
 
         self.createInfoFrame()
-        self.createControls()
+        self.createControlFrame()
 
     def createInfoFrame(self):
-        note = "C5"
-        lightColor = "green"
+        self.note = "C5"
+        self.lightColor = "green"
         self.contentFrame = ttk.Frame(self.master)
         self.contentFrame.pack()
         self.label = ttk.Label(self.contentFrame, text=self.note, foreground=self.lightColor).grid(row=0, column=1)
@@ -28,7 +28,7 @@ class Gui:
     def createControlFrame(self):
         self.buttonFrame = ttk.Frame(self.master)
         self.buttonFrame.pack()
-        self.nextButton = ttk.Button(self.buttonFrame, command=self.nextSong(), text="Next").grid(row=0, column=1)
+        self.nextButton = ttk.Button(self.buttonFrame, command=self.nextSong, text="Next").grid(row=0, column=1)
 
     def nextSong(self):
         print('Button pushed. Playing the next song')

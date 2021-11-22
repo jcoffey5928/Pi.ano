@@ -31,3 +31,12 @@ class SongController:
         self.currentKey = self.currentSong.notes[0][0]
         self.currentDelay = self.currentSong.notes[0][1]
         self.keyPlayed = None
+        
+
+    # Used for testing
+    def playSongs(self):
+        for song in self.songList:
+            print(song.title, end ='')
+            song.play(self.buzzer, self.light)
+            sleep(2)
+            print()
