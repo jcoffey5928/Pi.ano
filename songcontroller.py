@@ -6,6 +6,7 @@
 #Developer: Jonathan Coffey
 
 from keyboard import Keyboard
+from time import sleep
 
 class SongController:
      
@@ -20,6 +21,7 @@ class SongController:
         return currentKey == Keyboard.keyPlayed
 
     def nextSong(self):
+        print('changing to the next song')
         currentIndex = self.songList.index(self.currentSong)
         if (currentIndex + 1 < len(self.songList)):
             self.currentSong = self.songList[currentIndex]
@@ -40,3 +42,6 @@ class SongController:
             song.play(self.buzzer, self.light)
             sleep(2)
             print()
+
+    def getCurrentSong(self):
+        return self.currentSong

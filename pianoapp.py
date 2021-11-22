@@ -37,3 +37,10 @@ class PianoApp:
                 parser.parse(file)
                 self.songList.append(song)
         
+    # Used for testing
+    def playSongs(self):
+        for song in self.songList:
+            print(song.title, end ='')
+            song.play(self.buzzer, self.light)
+            sleep(2)
+            print()

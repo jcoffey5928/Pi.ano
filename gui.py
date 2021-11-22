@@ -1,10 +1,11 @@
 from tkinter import *
 from tkinter import ttk
+from keyboard import Keyboard
 
 class Gui:
     def __init__(self, master, controller):
-        self.controller = controller
         self.master = master
+        self.controller = controller
 
         self.master.title('Piano')
         self.master.resizable(True, True)
@@ -14,21 +15,21 @@ class Gui:
         self.style.configure("TLabel", background="grey", font=("Consolas", 14))
         self.style.configure("TFrame", background="red")
 
-
         self.createInfoFrame()
         self.createControlFrame()
 
     def createInfoFrame(self):
-        self.note = "C5"
-        self.lightColor = "green"
-        self.contentFrame = ttk.Frame(self.master)
-        self.contentFrame.pack()
-        self.label = ttk.Label(self.contentFrame, text=self.note, foreground=self.lightColor).grid(row=0, column=1)
+        note = self.controller.getCurrentSong()
+        lightColor = Keyboard.KEY_COLORS.get(note) 
+        contentFrame = ttk.Frame(self.master)
+        contentFrame.pack()
+        label = ttk.Label(self.contentFrame, text=note, foreground=lightColor).grid(row=0, column=1)
 
     def createControlFrame(self):
-        self.buttonFrame = ttk.Frame(self.master)
-        self.buttonFrame.pack()
-        self.nextButton = ttk.Button(self.buttonFrame, command=self.nextSong, text="Next").grid(row=0, column=1)
+        buttonFrame = ttk.Frame(self.master)
+        buttonFrame.pack()
+        nextButton = ttk.Button(self.buttonFrame, command=self.controller.nextSong, text="Next").grid(row=0, column=1)
 
     def nextSong(self):
         print('Button pushed. Playing the next song')
+        self.controller.nextSong()
