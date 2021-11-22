@@ -3,7 +3,6 @@ from songparser import SongParser
 from songcontroller import SongController
 from song import Song
 from light import Light
-from keyboard import Keyboard
 from time import sleep
 import os
 
@@ -20,10 +19,8 @@ class PianoApp:
 
         self.controller = SongController(self.songList)
 
-        #Keyboard.getInput()
         self.playSongs()
-            
-    # Collects all song files into an array, songList.
+
     def gatherFiles(self):
         for fileName in os.listdir("songs"):
             if fileName.endswith(".sg"):

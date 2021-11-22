@@ -10,4 +10,8 @@ def main():
     root.mainloop()
     app.run()
 
+def main():
+    app = PianoApp()
+    app.run()
+
 if __name__ == "__main__": main()
