@@ -45,3 +45,6 @@ class SongController:
 
     def getCurrentSong(self):
         return self.currentSong
+    
+    def getCurrentKey(self):
+        return self.currentKey

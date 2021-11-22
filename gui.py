@@ -19,11 +19,12 @@ class Gui:
         self.createControlFrame()
 
     def createInfoFrame(self):
-        note = self.controller.getCurrentSong()
-        lightColor = Keyboard.KEY_COLORS.get(note) 
+        song = self.controller.getCurrentSong()
+        key = self.controller.getCurrentKey()
+        lightColor = Keyboard.KEY_COLORS.get(key) 
         contentFrame = ttk.Frame(self.master)
         contentFrame.pack()
-        label = ttk.Label(contentFrame, text=note, foreground=lightColor).grid(row=0, column=1)
+        label = ttk.Label(contentFrame, text=key, foreground=lightColor).grid(row=0, column=1)
 
     def createControlFrame(self):
         buttonFrame = ttk.Frame(self.master)
