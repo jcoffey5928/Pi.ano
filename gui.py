@@ -23,12 +23,12 @@ class Gui:
         lightColor = Keyboard.KEY_COLORS.get(note) 
         contentFrame = ttk.Frame(self.master)
         contentFrame.pack()
-        label = ttk.Label(self.contentFrame, text=note, foreground=lightColor).grid(row=0, column=1)
+        label = ttk.Label(contentFrame, text=note, foreground=lightColor).grid(row=0, column=1)
 
     def createControlFrame(self):
         buttonFrame = ttk.Frame(self.master)
         buttonFrame.pack()
-        nextButton = ttk.Button(self.buttonFrame, command=self.controller.nextSong, text="Next").grid(row=0, column=1)
+        nextButton = ttk.Button(buttonFrame, command=self.controller.nextSong, text="Next").grid(row=0, column=1)
 
     def nextSong(self):
         print('Button pushed. Playing the next song')
