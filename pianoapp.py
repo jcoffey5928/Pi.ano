@@ -22,11 +22,11 @@ class PianoApp:
     def run(self):
         self.gatherFiles()
         self.controller = SongController(self.songList)
-        #root = Tk()
-        #gui = Gui(root, self.controller)
+        root = Tk()
+        gui = Gui(root, self.controller)
 
-        #root.mainloop()
-        self.playSongs()
+        root.mainloop()
+        #self.playSongs()
 
     def gatherFiles(self):
         for fileName in os.listdir("songs"):
