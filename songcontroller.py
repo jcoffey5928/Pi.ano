@@ -5,6 +5,8 @@
 #         for the next 3 notes or if the entire song is played. 
 #Developer: Jonathan Coffey
 
+from gpiozero import TonalBuzzer
+from light import Light
 from keyboard import Keyboard
 from time import sleep
 
@@ -16,15 +18,23 @@ class SongController:
         self.currentKey = self.currentSong.notes[0][0]
         self.currentDelay = self.currentSong.notes[0][1]
         self.keyPlayed = None
+        self.buzzer = TonalBuzzer(2)
+        self.light = Light(12, 19, 13)
+        self.light.turnOff()
 
     def isKeyCorrect(self, currentKey):
         return currentKey == Keyboard.keyPlayed
 
+    def playSong(self):
+        print(self.currentSong.title, end ='')
+        self.currentSong.play(self.buzzer, self.light)
+        sleep(0.1)
+        print()
+
     def nextSong(self):
-        print('changing to the next song')
         currentIndex = self.songList.index(self.currentSong)
         if (currentIndex + 1 < len(self.songList)):
-            self.currentSong = self.songList[currentIndex]
+            self.currentSong = self.songList[currentIndex + 1]
         else:
             self.currentSong = self.songList[0]
         self.reset()
@@ -35,7 +45,7 @@ class SongController:
         self.keyPlayed = None
         
 
-    # Used for testing
+    # Used for testing all songs
     def playSongs(self):
         for song in self.songList:
             print(song.title, end ='')

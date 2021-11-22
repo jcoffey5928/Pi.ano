@@ -30,3 +30,6 @@ class Song:
             print(note)
             sleep(float(delay))
 
+    def getTitle(self):
+        return self.title
+
