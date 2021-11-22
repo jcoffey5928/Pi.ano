@@ -2,9 +2,12 @@ from tkinter import *
 from tkinter import ttk
 
 class Gui:
-    def __init__(self, master):
-        master.title('Piano')
-        master.resizable(True, True)
+    def __init__(self, master, controller):
+        self.controller = controller
+        self.master = master
+
+        self.master.title('Piano')
+        self.master.resizable(True, True)
 
         self.style = ttk.Style()
         self.style.configure("TButton", background="blue", padding=6)
@@ -12,14 +15,20 @@ class Gui:
         self.style.configure("TFrame", background="red")
 
 
-        self.note = "C5"
-        self.color = "green"
+        self.createInfoFrame()
+        self.createControls()
 
-        self.contentFrame = ttk.Frame(master)
+    def createInfoFrame(self):
+        note = "C5"
+        lightColor = "green"
+        self.contentFrame = ttk.Frame(self.master)
         self.contentFrame.pack()
-        self.label = ttk.Label(self.contentFrame, text=self.note, foreground=self.color).grid(row=0, column=1)
+        self.label = ttk.Label(self.contentFrame, text=self.note, foreground=self.lightColor).grid(row=0, column=1)
 
-        self.buttonFrame = ttk.Frame(master)
+    def createControlFrame(self):
+        self.buttonFrame = ttk.Frame(self.master)
         self.buttonFrame.pack()
-        self.nextButton = ttk.Button(self.buttonFrame, text="Next").grid(row=0, column=1)
+        self.nextButton = ttk.Button(self.buttonFrame, command=self.nextSong(), text="Next").grid(row=0, column=1)
 
+    def nextSong(self):
+        print('Button pushed. Playing the next song')

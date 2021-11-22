@@ -1,8 +1,13 @@
+#!/usr/bin/env python3
+
 from gpiozero import TonalBuzzer
 from songparser import SongParser
 from songcontroller import SongController
 from song import Song
 from light import Light
+from gui import Gui
+from tkinter import *
+from tkinter import ttk
 from time import sleep
 import os
 
@@ -16,9 +21,11 @@ class PianoApp:
 
     def run(self):
         self.gatherFiles()
-
         self.controller = SongController(self.songList)
+        #root = Tk()
+        #gui = Gui(root, self.controller)
 
+        #root.mainloop()
         self.playSongs()
 
     def gatherFiles(self):
