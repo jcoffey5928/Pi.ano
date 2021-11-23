@@ -39,6 +39,15 @@ class SongController:
             self.currentSong = self.songList[0]
         self.reset()
     
+    def prevSong(self):
+        currentIndex = self.songList.index(self.currentSong)
+        print(len(self.songList))
+        if (currentIndex - 1 >= 0):
+            self.currentSong = self.songList[currentIndex - 1]
+        else:
+            self.currentSong = len(self.songList)
+        self.reset()
+        
     def reset(self):
         self.currentKey = self.currentSong.notes[0][0]
         self.currentDelay = self.currentSong.notes[0][1]

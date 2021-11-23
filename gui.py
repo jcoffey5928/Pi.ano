@@ -46,11 +46,14 @@ class Gui:
         self.controller.playSong()
 
     def prevSong(self):
-        # TODO Implement prevSong
-        print("Prev Song")
+        self.controller.prevSong()
+        self.reset()
 
     def nextSong(self):
         self.controller.nextSong()
+        self.reset()
+
+    def reset(self):
         self.song = self.controller.getCurrentSong()
         print(f"prev key: {self.key}; prev color: {self.lightColor}")
         self.song = self.controller.getCurrentSong().getTitle()
