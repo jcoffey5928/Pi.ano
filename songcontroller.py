@@ -6,6 +6,7 @@
 #Developer: Jonathan Coffey
 
 from gpiozero import TonalBuzzer
+from gpiozero.tones import Tone
 from light import Light
 from keyboard import Keyboard
 from time import sleep
@@ -25,10 +26,20 @@ class SongController:
     def isKeyCorrect(self, currentKey):
         return currentKey == Keyboard.keyPlayed
 
-    def playSong(self):
+    def playSong(self, gui):
         print(self.currentSong.title, end ='')
-        self.currentSong.play(self.buzzer, self.light)
-        sleep(0.1)
+        #self.currentSong.play(self.buzzer, self.light)
+        for i in self.currentSong.keys:
+            key = i[0]
+            delay = i[1]
+            print(key)
+            self.buzzer.play(Tone(key))
+            self.light.onWithDelay(Keyboard.KEY_COLORS.get(key), float(delay))
+            self.light.turnOff()
+            sleep(float(delay))
+            self.buzzer.stop()
+            sleep(0.1)
+        self.light.turnOff()
         print()
 
     def nextSong(self):
