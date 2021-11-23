@@ -15,5 +15,5 @@ class SongParser:
         if (line.find(self.TITLE_SPLIT) != -1):
             self.song.title = line.split(self.TITLE_SPLIT)[1]
         else:
-            self.song.keys.append(line.split())
+            self.song.notes.append(line.split())
 
