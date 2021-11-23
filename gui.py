@@ -64,3 +64,4 @@ class Gui:
         self.keyText.set(f"Key: {self.key}")
         self.lightColor = Keyboard.KEY_COLORS.get(self.key) 
         self.style.configure("K.TLabel", foreground = self.lightColor)
+        self.master.update_idletasks()
