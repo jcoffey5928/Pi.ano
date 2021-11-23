@@ -16,8 +16,8 @@ class SongController:
     def __init__(self, songList):
         self.songList = songList
         self.currentSong = songList[0]
-        self.currentKey = self.currentSong.keys[0][0]
-        self.currentDelay = self.currentSong.keys[0][1]
+        self.currentKey = self.currentSong.notes[0][0]
+        self.currentDelay = self.currentSong.notes[0][1]
         self.keyPlayed = None
         self.buzzer = TonalBuzzer(2)
         self.light = Light(12, 19, 13)
@@ -29,14 +29,15 @@ class SongController:
     def playSong(self, gui):
         print(self.currentSong.title, end ='')
         #self.currentSong.play(self.buzzer, self.light)
-        for i in self.currentSong.keys:
-            key = i[0]
-            delay = i[1]
-            print(key)
-            self.buzzer.play(Tone(key))
-            self.light.onWithDelay(Keyboard.KEY_COLORS.get(key), float(delay))
+        for i in self.currentSong.notes:
+            self.currentKey = i[0]
+            self.currentDelay = i[1]
+            print(self.currentKey)
+            gui.updateKeyInfo()
+            self.buzzer.play(Tone(self.currentKey))
+            self.light.onWithDelay(Keyboard.KEY_COLORS.get(self.currentKey), float(self.currentDelay))
             self.light.turnOff()
-            sleep(float(delay))
+            sleep(float(self.currentDelay))
             self.buzzer.stop()
             sleep(0.1)
         self.light.turnOff()
@@ -60,8 +61,8 @@ class SongController:
         self.reset()
         
     def reset(self):
-        self.currentKey = self.currentSong.keys[0][0]
-        self.currentDelay = self.currentSong.keys[0][1]
+        self.currentKey = self.currentSong.notes[0][0]
+        self.currentDelay = self.currentSong.notes[0][1]
         self.keyPlayed = None
         
 

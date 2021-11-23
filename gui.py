@@ -55,11 +55,12 @@ class Gui:
 
     def reset(self):
         self.song = self.controller.getCurrentSong()
-        print(f"prev key: {self.key}; prev color: {self.lightColor}")
         self.song = self.controller.getCurrentSong().getTitle()
         self.songText.set(self.song)
+        self.updateKeyInfo()
+
+    def updateKeyInfo(self):
         self.key = self.controller.getCurrentKey()
         self.keyText.set(f"Key: {self.key}")
         self.lightColor = Keyboard.KEY_COLORS.get(self.key) 
-        print(f"current key: {self.key}; current colorr: {self.lightColor}")
         self.style.configure("K.TLabel", foreground = self.lightColor)
