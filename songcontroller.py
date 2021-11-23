@@ -45,7 +45,7 @@ class SongController:
         if (currentIndex - 1 >= 0):
             self.currentSong = self.songList[currentIndex - 1]
         else:
-            self.currentSong = self.currentSong[len(self.songList) - 1]
+            self.currentSong = self.songList[len(self.songList) - 1]
         self.reset()
         
     def reset(self):
