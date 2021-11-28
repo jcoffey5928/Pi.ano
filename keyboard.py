@@ -42,7 +42,7 @@ class Keyboard:
                 KEY5 = GPIO.input(18)
                 #if the last reading was low and this one high, alert us
                 if ((not prev_input) and KEY1):
-                    print(KEY1)
+                    print("under pressure")
                # if ((not prev_input) and KEY2):
                #     print(KEY2)
                # if ((not prev_input) and KEY3):
@@ -52,7 +52,7 @@ class Keyboard:
                # if ((not prev_input) and KEY5):
                #     print(KEY5)
                 #update previous input
-                prev_input = input
+                prev_input = KEY1
                 #slight pause
                 time.sleep(0.10)
         except KeyboardInterrupt:
