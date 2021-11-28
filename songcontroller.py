@@ -87,7 +87,7 @@ class SongController:
     def startKeyboardMode(self):
         print("Starting keyboard mode...")
         self.light.flash("white")
-        Keyboard.play()
+        Keyboard.play(self.buzzer)
     
     def startLearningMode(self):
         print("Starting learning mode...")
