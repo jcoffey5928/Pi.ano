@@ -33,6 +33,7 @@ class Light:
             self.led.color = Color(colstr)
             sleep(0.1)
             self.turnOff()
+            sleep(0.1)
 
     def flashLearningMode(self):
         for i in range(2):

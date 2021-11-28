@@ -7,6 +7,7 @@ class Gui:
         self.master = master
         self.master.title('Piano')
         self.master.resizable(False, False)
+        self.master.configure(background="black")
 
         self.controller = controller
         self.controller.setGui(self)
@@ -23,7 +24,7 @@ class Gui:
         self.style.configure("Pl.TButton", background="green", padding=6)
         self.style.configure("Pr.TButton", background="grey", padding=6)
         self.style.configure("N.TButton", background="grey", padding=6)
-        self.style.configure("KB.TButton", background="yellow", foreground="white", padding=6)
+        self.style.configure("KB.TButton", background="yellow", padding=6)
         self.style.configure("S.TLabel", textvariable=self.songText, background="black", foreground="white", font=("Consolas", 14), anchor="center")
         self.style.configure("K.TLabel", textvariable=self.keyText, background="black", foreground=self.lightColor, font=("Consolas", 14, "bold"), anchor="center")
 
