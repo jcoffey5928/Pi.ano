@@ -35,7 +35,9 @@ class Light:
             self.turnOff()
 
     def flashLearningMode(self):
-        for key in Keyboard.KEY_COLORS():
-            self.led.color = Color(Keyboard.Key_COLORS.get(key))
-            sleep(0.1)
-            self.turnOff()
+        for i in range(2):
+            for key in Keyboard.KEY_COLORS:
+                self.led.color = Color(Keyboard.KEY_COLORS.get(key))
+                sleep(0.1)
+                self.turnOff()
+            sleep(0.2)
