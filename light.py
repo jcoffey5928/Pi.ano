@@ -1,3 +1,4 @@
+from keyboard import Keyboard
 from os import error
 from gpiozero import RGBLED
 from colorzero import Color
@@ -25,3 +26,16 @@ class Light:
 
     def turnOff(self):
         self.led.off()
+
+    # Flashes the light of the selected color 3 times
+    def flash(self, colstr):
+        for i in range(3):
+            self.led.color = Color(colstr)
+            sleep(0.1)
+            self.turnOff()
+
+    def flashLearningMode(self):
+        for key in Keyboard.KEY_COLORS():
+            self.led.color = Color(Keyboard.Key_COLORS.get(key))
+            sleep(0.1)
+            self.turnOff()

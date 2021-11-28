@@ -10,7 +10,11 @@ class Keyboard:
     keyPlayed = None
 
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(4,GPIO.IN)
+    KEY1 = GPIO.setup(4,GPIO.IN)
+    KEY2 = GPIO.setup(14,GPIO.IN)
+    KEY3 = GPIO.setup(15,GPIO.IN)
+    KEY4 = GPIO.setup(17,GPIO.IN)
+    KEY5 = GPIO.setup(18,GPIO.IN)
     
     @staticmethod
     def playKey(key):

@@ -22,18 +22,19 @@ class SongController:
         self.buzzer = TonalBuzzer(2)
         self.light = Light(12, 19, 13)
         self.light.turnOff()
+        self.gui = None
 
-    def isKeyCorrect(self, currentKey):
+    def correctKeyPlayed(self, currentKey):
         return currentKey == Keyboard.keyPlayed
 
-    def playSong(self, gui):
+    def playSong(self):
         print(self.currentSong.title, end ='')
         #self.currentSong.play(self.buzzer, self.light)
         for i in self.currentSong.notes:
             self.currentKey = i[0]
             self.currentDelay = i[1]
             print(self.currentKey)
-            gui.updateKeyInfo()
+            self.gui.updateKeyInfo()
             self.buzzer.play(Tone(self.currentKey))
             self.light.onWithDelay(Keyboard.KEY_COLORS.get(self.currentKey), float(self.currentDelay))
             self.light.turnOff()
@@ -44,7 +45,7 @@ class SongController:
         print()
         self.currentKey = ""
         self.currentDelay = ""
-        gui.updateKeyInfo()
+        self.gui.updateKeyInfo()
 
     def nextSong(self):
         currentIndex = self.songList.index(self.currentSong)
@@ -82,3 +83,18 @@ class SongController:
     
     def getCurrentKey(self):
         return self.currentKey
+
+    def startKeyboardMode(self):
+        print("Starting keyboard mode...")
+        self.light.flash("white")
+        Keyboard.play()
+    
+    def startLearningMode(self):
+        print("Starting learning mode...")
+        self.light.flashLearningMode()
+
+    def setGui(self, gui):
+        if (gui != None):
+            self.gui = gui
+        else:
+            print("Error. GUI is null!")
