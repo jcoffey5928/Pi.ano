@@ -47,8 +47,8 @@ class Gui:
     def createModeControlFrame(self):
         modeFrame = ttk.Frame(self.master, style="TFrame")
         modeFrame.pack()
-        keyboardButton = ttk.Button(modeFrame, command=self.startKeyboardMode, text="Keyboard Mode", style="KB.TButton")
-        learningButton = ttk.Button(modeFrame, command=self.startLearningMode, text="Learning Mode", style="KB.TButton")
+        keyboardButton = ttk.Button(modeFrame, command=self.startKeyboardMode, text="Keyboard Mode", style="KB.TButton").grid(row=1, column=0)
+        learningButton = ttk.Button(modeFrame, command=self.startLearningMode, text="Learning Mode", style="KB.TButton").grid(row=1, column=1)
 
     def playSong(self):
         #TODO Implement color changing text that follows the song keys
