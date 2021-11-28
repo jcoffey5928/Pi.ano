@@ -52,7 +52,7 @@ class Gui:
 
     def playSong(self):
         #TODO Implement color changing text that follows the song keys
-        self.controller.playSong(self)
+        self.controller.playSong()
 
     def prevSong(self):
         self.controller.prevSong()
