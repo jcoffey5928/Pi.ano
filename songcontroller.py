@@ -89,6 +89,7 @@ class SongController:
             self.mode = mode
             print("Starting learning mode...")
             self.light.flashLearningMode()
+            self.light.turnOn(self.getCurrentKeyColor())
             Keyboard.play(self)
             self.reset()
         else:
@@ -126,6 +127,8 @@ class SongController:
                 if (self.correctKeyPlayed()):
                     self.light.turnOff()
                     sleep(0.1)
+                    if (self.getNextSongKey(self.keyIndex) == None):
+                        return
                     self.currentKey = self.getNextSongKey(self.keyIndex)
                     self.keyIndex += 1
                     self.light.turnOn(self.getCurrentKeyColor())
