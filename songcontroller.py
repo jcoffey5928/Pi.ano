@@ -36,9 +36,6 @@ class SongController:
             print(self.currentKey)
             self.gui.updateKeyInfo()
             self.playKeyWithLight(self.currentKey,float(self.currentDelay))
-            self.light.turnOff()
-            sleep(float(self.currentDelay))
-            self.buzzer.stop()
             sleep(0.1)
         self.light.turnOff()
         print()
@@ -95,6 +92,9 @@ class SongController:
     def playKeyWithLight(self, key, delay):
         self.buzzer.play(Tone(key))
         self.light.onWithDelay(Keyboard.KEY_COLORS.get(key), delay)
+        sleep(delay)
+        self.buzzer.stop()
+        self.light.turnOff()
 
     def setGui(self, gui):
         if (gui != None):
