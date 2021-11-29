@@ -17,15 +17,13 @@ class SongController:
         self.songList = songList
         self.currentSong = songList[0]
         self.currentKey = self.currentSong.notes[0][0]
+        self.keyIndex = 0
         self.currentDelay = self.currentSong.notes[0][1]
-        self.keyPlayed = None
         self.buzzer = TonalBuzzer(2)
         self.light = Light(12, 19, 13)
         self.light.turnOff()
         self.gui = None
-
-    def correctKeyPlayed(self, currentKey):
-        return currentKey == Keyboard.keyPlayed
+        self.mode = None
 
     def playSong(self):
         print(self.currentSong.title, end ='')
@@ -63,9 +61,10 @@ class SongController:
     def reset(self):
         self.currentKey = self.currentSong.notes[0][0]
         self.currentDelay = self.currentSong.notes[0][1]
-        self.keyPlayed = None
+        self.keyIndex = 0
+        self.mode = None
+        Keyboard.keyPlayed = None
         
-
     # Used for testing all songs
     def playSongs(self):
         for song in self.songList:
@@ -80,18 +79,29 @@ class SongController:
     def getCurrentKey(self):
         return self.currentKey
 
-    def startKeyboardMode(self):
-        print("Starting keyboard mode...")
-        self.light.flash("white")
-        Keyboard.play(self)
-    
-    def startLearningMode(self):
-        print("Starting learning mode...")
-        self.light.flashLearningMode()
+    def playMode(self, mode):
+        if (mode == "keyboard"):
+            self.mode = mode
+            print("Starting keyboard mode...")
+            self.light.flash("white")
+            Keyboard.play(self)
+        elif (mode == "learning"):
+            self.mode = mode
+            print("Starting learning mode...")
+            self.light.flashLearningMode()
+            Keyboard.play(self)
+            self.reset()
+        else:
+            self.mode = None
+
+    def playKey(self, key, delay):
+        self.buzzer.play(Tone(key))
+        sleep(delay)
+        self.buzzer.stop()
 
     def playKeyWithLight(self, key, delay):
         self.buzzer.play(Tone(key))
-        self.light.onWithDelay(Keyboard.KEY_COLORS.get(key), delay)
+        self.light.onWithDelay(self.getCurrentKeyColor, delay)
         sleep(delay)
         self.buzzer.stop()
         self.light.turnOff()
@@ -101,3 +111,30 @@ class SongController:
             self.gui = gui
         else:
             print("Error. GUI is null!")
+
+    def keyboardUpdate(self):
+        if (self.mode == "keyboard"):
+            if (Keyboard.keyPlayed != None):
+                self.playKeyWithLight(Keyboard.keyPlayed, Keyboard.KEY_SLEEP)
+
+        elif (self.mode == "learning"):
+            # TODO check end of song
+            if (Keyboard.keyPlayed != None):
+                self.playKey(Keyboard.keyPlayed, Keyboard.KEY_SLEEP)
+
+                if (self.correctKeyPlayed()):
+                    self.light.turnOff()
+                    sleep(0.1)
+                    self.currentKey = self.getNextSongKey(self.keyIndex)
+                    self.keyIndex += 1
+                    self.light.turnOn(self.getCurrentKeyColor)
+                    self.gui.updateKeyInfo()
+    
+    def correctKeyPlayed(self):
+        return self.currentKey == Keyboard.keyPlayed
+
+    def getNextSongKey(self, index):
+        return self.currentSong.notes[index + 1][0]
+
+    def getCurrentKeyColor(self):
+        return Keyboard.KEY_COLORS.get(self.currentKey)

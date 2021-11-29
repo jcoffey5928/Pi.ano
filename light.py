@@ -21,8 +21,8 @@ class Light:
             print(f'Invalid delay of {delay} seconds')
 
     # Default color will be white
-    def turnOn(self):
-        self.led.color = Color('white')
+    def turnOn(self, color='white'):
+        self.led.color = Color(color)
 
     def turnOff(self):
         self.led.off()

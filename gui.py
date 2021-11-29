@@ -77,7 +77,9 @@ class Gui:
         self.master.update_idletasks()
 
     def startKeyboardMode(self):
-        self.controller.startKeyboardMode()
+        self.controller.playMode("keyboard")
+        self.updateKeyInfo()
 
     def startLearningMode(self):
-        self.controller.startLearningMode()
+        self.controller.playMode("learning")
+        self.updateKeyInfo()
