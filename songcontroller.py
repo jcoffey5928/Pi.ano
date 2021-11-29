@@ -127,7 +127,7 @@ class SongController:
                     sleep(0.1)
                     self.currentKey = self.getNextSongKey(self.keyIndex)
                     self.keyIndex += 1
-                    self.light.turnOn(self.getCurrentKeyColor)
+                    self.light.turnOn(self.getCurrentKeyColor())
                     self.gui.updateKeyInfo()
     
     def correctKeyPlayed(self):
