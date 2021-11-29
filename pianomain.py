@@ -5,7 +5,11 @@ import RPi.GPIO as GPIO
 
 def main():
     app = PianoApp()
-    app.run()
-    GPIO.cleanup()
+    try:
+        app.run()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        GPIO.cleanup()
 
 if __name__ == "__main__": main()

@@ -8,6 +8,7 @@ from time import sleep
 class Keyboard:
     KEY_COLORS = {'C5': 'green', 'D5': 'red', 'E5': 'orange', 'F5': 'pink', 'G5': 'purple'}
     RETURN_SEQUENCE = ['C5', 'C5', 'C5', 'C5', 'C5']
+    KEY_SLEEP = 0.05
     keyPlayed = None
 
     GPIO.setmode(GPIO.BCM)
@@ -64,14 +65,14 @@ class Keyboard:
                 Keyboard.keyPlayed = None
 
             if (Keyboard.keyPlayed != None):
-                controller.playKeyWithLight(Keyboard.keyPlayed, 0.1)
+                controller.playKeyWithLight(Keyboard.keyPlayed, Keyboard.KEY_SLEEP)
             #update previous input
             prev_KEY1 = KEY1
             prev_KEY2 = KEY2
             prev_KEY3 = KEY3
             prev_KEY4 = KEY4
             prev_KEY5 = KEY5
-            controller.update()
+            #controller.update()
 
     @staticmethod
     def learn(controller):
@@ -99,23 +100,23 @@ class Keyboard:
             if ((not prev_KEY1) and KEY1):
                 print("Played: C5")
                 keyReturnList.append("C5")
-                controller.playKeyWithLight("C5", 0.1)
+                controller.playKeyWithLight("C5", Keyboard.KEY_SLEEP)
             elif ((not prev_KEY2) and KEY2):
                 print("Played: D5")
                 keyReturnList.append("D5")
-                controller.playKeyWithLight("D5", 0.1)
+                controller.playKeyWithLight("D5", Keyboard.KEY_SLEEP)
             elif ((not prev_KEY3) and KEY3):
                 print("Played: E5")
                 keyReturnList.append("E5")
-                controller.playKeyWithLight("E5", 0.1)
+                controller.playKeyWithLight("E5", Keyboard.KEY_SLEEP)
             elif ((not prev_KEY4) and KEY4):
                 print("Played: F5")
                 keyReturnList.append("F5")
-                controller.playKeyWithLight("F5", 0.1)
+                controller.playKeyWithLight("F5", Keyboard.KEY_SLEEP)
             elif ((not prev_KEY5) and KEY5):
                 print("Played: G5")
                 keyReturnList.append("G5")
-                controller.playKeyWithLight("G5", 0.1)
+                controller.playKeyWithLight("G5", Keyboard.KEY_SLEEP)
             #update previous input
             prev_KEY1 = KEY1
             prev_KEY2 = KEY2
