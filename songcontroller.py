@@ -115,6 +115,7 @@ class SongController:
     def keyboardUpdate(self):
         if (self.mode == "keyboard"):
             if (Keyboard.keyPlayed != None):
+                self.currentKey = Keyboard.keyPlayed
                 self.playKeyWithLight(Keyboard.keyPlayed, Keyboard.KEY_SLEEP)
 
         elif (self.mode == "learning"):
