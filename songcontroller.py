@@ -101,7 +101,7 @@ class SongController:
 
     def playKeyWithLight(self, key, delay):
         self.buzzer.play(Tone(key))
-        self.light.onWithDelay(self.getCurrentKeyColor, delay)
+        self.light.onWithDelay(self.getCurrentKeyColor(), delay)
         sleep(delay)
         self.buzzer.stop()
         self.light.turnOff()
