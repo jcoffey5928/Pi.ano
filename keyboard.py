@@ -60,8 +60,11 @@ class Keyboard:
                 print("Played: G5")
                 keyReturnList.append("G5")
                 Keyboard.keyPlayed = "G5"
+            else:
+                Keyboard.keyPlayed = None
 
-            controller.playKeyWithLight(Keyboard.keyPlayed, 0.1)
+            if (Keyboard.keyPlayed != None):
+                controller.playKeyWithLight(Keyboard.keyPlayed, 0.1)
             #update previous input
             prev_KEY1 = KEY1
             prev_KEY2 = KEY2
