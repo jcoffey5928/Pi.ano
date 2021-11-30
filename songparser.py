@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+#Name: songparser.py
+#Purpose: A class which parses all song files within the current directory.
+#Developer: Jonathan Coffey
+
 from song import Song
 
 class SongParser:

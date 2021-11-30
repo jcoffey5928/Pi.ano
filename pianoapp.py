@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+#Name: pianoapp.py
+#Purpose: Runs the program by breaking it into separate functions; gathering files, 
+#         creating the gui, and running the main loop.
+#Developer: Jonathan Coffey
 
 from songparser import SongParser
 from songcontroller import SongController

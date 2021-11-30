@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+#Name: light.py
+#Purpose: Class which controls various LED functions. 
+#Developer: Jonathan Coffey
+
 from keyboard import Keyboard
 from os import error
 from gpiozero import RGBLED

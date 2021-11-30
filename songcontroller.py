@@ -120,10 +120,8 @@ class SongController:
                 self.playKeyWithLight(Keyboard.keyPlayed, Keyboard.KEY_SLEEP)
 
         elif (self.mode == "learning"):
-            # TODO check end of song
             if (Keyboard.keyPlayed != None):
                 self.playKey(Keyboard.keyPlayed, Keyboard.KEY_SLEEP)
-
                 if (self.correctKeyPlayed()):
                     self.light.turnOff()
                     sleep(0.1)

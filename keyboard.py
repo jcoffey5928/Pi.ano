@@ -1,5 +1,6 @@
+#!/usr/bin/env python3
 #Name: keyboard.py
-#Purpose: 
+#Purpose: Class that contains keyboard information and allows the user to play keys.
 #Developer: Jonathan Coffey
 
 import RPi.GPIO as GPIO

@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+#Name: gui.py
+#Purpose: View for the user to interact with which calls the controller.         
+#Developer: Jonathan Coffey
+
 from tkinter import *
 from tkinter import ttk
 from keyboard import Keyboard
