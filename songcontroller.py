@@ -131,6 +131,8 @@ class SongController:
                     self.keyIndex += 1
                     self.light.turnOn(self.getCurrentKeyColor())
                     self.gui.updateKeyInfo()
+            else:
+                self.gui.update()
     
     def correctKeyPlayed(self):
         return self.currentKey == Keyboard.keyPlayed
@@ -140,3 +142,11 @@ class SongController:
 
     def getCurrentKeyColor(self):
         return Keyboard.KEY_COLORS.get(self.currentKey)
+
+    def playThreeNotes(self):
+        tempKey = self.currentKey
+        tempIndex = self.keyIndex
+        for i in range(3):
+            self.playKeyWithLight(tempKey, Keyboard.KEY_SLEEP)
+            tempKey = self.getNextSongKey(tempIndex)
+            tempIndex += 1

@@ -30,6 +30,7 @@ class Gui:
         self.style.configure("Pr.TButton", background="grey", padding=6)
         self.style.configure("N.TButton", background="grey", padding=6)
         self.style.configure("KB.TButton", background="yellow", padding=6)
+        self.style.configure("H.TButton", background="BLUE", padding=6)
         self.style.configure("S.TLabel", textvariable=self.songText, background="black", foreground="white", font=("Consolas", 14), anchor="center")
         self.style.configure("K.TLabel", textvariable=self.keyText, background="black", foreground=self.lightColor, font=("Consolas", 14, "bold"), anchor="center")
 
@@ -49,6 +50,7 @@ class Gui:
         playButton = ttk.Button(buttonFrame, command=self.playSong, text="Play", style="Pl.TButton").grid(row=0, column=0)
         prevButton = ttk.Button(buttonFrame, command=self.prevSong, text="Previous", style="Pr.TButton").grid(row=0, column=1)
         nextButton = ttk.Button(buttonFrame, command=self.nextSong, text="Next", style="N.TButton").grid(row=0, column=2)
+        self.helpButton = ttk.Button(buttonFrame, command=self.playThreeNotes, text="Play 3 Notes", state=DISABLED, style="H.TButton").grid(row=1, column=2)
     
     def createModeControlFrame(self):
         modeFrame = ttk.Frame(self.master, style="TFrame")
@@ -57,7 +59,6 @@ class Gui:
         learningButton = ttk.Button(modeFrame, command=self.startLearningMode, text="Learning Mode", style="KB.TButton").grid(row=1, column=1)
 
     def playSong(self):
-        #TODO Implement color changing text that follows the song keys
         self.controller.playSong()
 
     def prevSong(self):
@@ -80,11 +81,19 @@ class Gui:
         self.lightColor = Keyboard.KEY_COLORS.get(self.key) 
         self.style.configure("K.TLabel", foreground = self.lightColor)
         self.master.update_idletasks()
+    
+    def update(self):
+        self.master.update_idletasks()
 
     def startKeyboardMode(self):
         self.controller.playMode("keyboard")
         self.updateKeyInfo()
 
     def startLearningMode(self):
+        self.helpButton.state(["!disabled"])
         self.controller.playMode("learning")
         self.updateKeyInfo()
+        self.helpButton.state(["disabled"])
+    
+    def playThreeNotes(self):
+        self.controller.playThreeNotes()
