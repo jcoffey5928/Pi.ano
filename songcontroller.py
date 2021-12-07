@@ -37,8 +37,7 @@ class SongController:
             sleep(0.1)
         self.light.turnOff()
         print()
-        self.currentKey = ""
-        self.currentDelay = ""
+        self.reset()
         self.gui.updateKeyInfo()
 
     def nextSong(self):
