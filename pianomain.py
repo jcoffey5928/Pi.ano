@@ -8,6 +8,5 @@ from pianoapp import PianoApp
 def main():
     app = PianoApp()
     app.run()
-    app.cleanup()
 
 if __name__ == "__main__": main()

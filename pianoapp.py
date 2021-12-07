@@ -28,7 +28,6 @@ class PianoApp:
                 root.mainloop()
             except KeyboardInterrupt:
                 print("Exception caught. Ending program.")
-            finally:
                 self.controller.cleanup()
         else:
             print("NO SONG FILES FOUND")
