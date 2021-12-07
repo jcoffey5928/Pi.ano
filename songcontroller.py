@@ -125,7 +125,8 @@ class SongController:
                 if (self.correctKeyPlayed()):
                     self.light.turnOff()
                     sleep(0.1)
-                    if (self.getNextSongKey(self.keyIndex) == None):
+                    if (self.getNextSongKey(self.keyIndex) == -1):
+                        print("End of song")
                         return
                     self.currentKey = self.getNextSongKey(self.keyIndex)
                     self.keyIndex += 1
@@ -138,7 +139,10 @@ class SongController:
         return self.currentKey == Keyboard.keyPlayed
 
     def getNextSongKey(self, index):
-        return self.currentSong.notes[index + 1][0]
+        try:
+            return self.currentSong.notes[index + 1][0]
+        except Exception:
+            return -1
 
     def getCurrentKeyColor(self):
         return Keyboard.KEY_COLORS.get(self.currentKey)
@@ -150,3 +154,6 @@ class SongController:
             self.playKeyWithLight(tempKey, Keyboard.KEY_SLEEP)
             tempKey = self.getNextSongKey(tempIndex)
             tempIndex += 1
+
+    def cleanup(self):
+        Keyboard.cleanup()
