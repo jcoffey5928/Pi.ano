@@ -30,7 +30,7 @@ class Gui:
         self.style.configure("Pr.TButton", background="grey", padding=6)
         self.style.configure("N.TButton", background="grey", padding=6)
         self.style.configure("KB.TButton", background="yellow", padding=6)
-        self.style.configure("H.TButton", background="BLUE", padding=6)
+        self.style.configure("H.TButton", background="blue", padding=6)
         self.style.configure("S.TLabel", textvariable=self.songText, background="black", foreground="white", font=("Consolas", 14), anchor="center")
         self.style.configure("K.TLabel", textvariable=self.keyText, background="black", foreground=self.lightColor, font=("Consolas", 14, "bold"), anchor="center")
 
