@@ -29,10 +29,11 @@ class Keyboard:
         prev_KEY4 = 0
         prev_KEY5 = 0
         while True:
-            print(keyReturnList)
+            if (controller.getNextSongKey(controller.keyIndex) == -1):
+                break
             if (len(keyReturnList) == 5):
                 if (keyReturnList == Keyboard.RETURN_SEQUENCE):
-                    break;
+                    break
             if (len(keyReturnList) > 5):
                 keyReturnList.pop(0)
             #take a reading
