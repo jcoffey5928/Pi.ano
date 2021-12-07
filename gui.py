@@ -87,15 +87,18 @@ class Gui:
         self.master.update_idletasks()
 
     def startKeyboardMode(self):
+        print("\nStarting keyboard mode...")
         self.controller.playMode("keyboard")
         self.updateKeyInfo()
 
     def startLearningMode(self):
         #self.helpButton.state(["!disabled"])
+        print("\nStarting learning mode...")
         self.controller.playMode("learning")
         self.updateKeyInfo()
         self.helpButton.state(["disabled"])
         self.update()
+        print("End of learning mode")
     
     def playThreeNotes(self):
         self.controller.playThreeNotes()

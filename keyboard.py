@@ -29,8 +29,6 @@ class Keyboard:
         prev_KEY4 = 0
         prev_KEY5 = 0
         while True:
-            if (controller.getNextSongKey(controller.keyIndex) == -1):
-                break
             if (len(keyReturnList) == 5):
                 if (keyReturnList == Keyboard.RETURN_SEQUENCE):
                     break
@@ -61,11 +59,13 @@ class Keyboard:
             else:
                 Keyboard.keyPlayed = None
 
-            if (Keyboard.keyPlayed == None):
-                print("Key = None")
-            else:
-                print(Keyboard.keyPlayed)
+            #if (Keyboard.keyPlayed == None):
+            #    print("Key = None")
+            #else:
+            #    print(Keyboard.keyPlayed)
             controller.keyboardUpdate()
+            if (controller.currentKey == -1):
+                break
             #update previous input
             prev_KEY1 = KEY1
             prev_KEY2 = KEY2

@@ -51,7 +51,6 @@ class SongController:
     
     def prevSong(self):
         currentIndex = self.songList.index(self.currentSong)
-        print(len(self.songList))
         if (currentIndex - 1 >= 0):
             self.currentSong = self.songList[currentIndex - 1]
         else:
@@ -80,14 +79,13 @@ class SongController:
         return self.currentKey
 
     def playMode(self, mode):
+        print(f"Press the breakout sequence to quit mode: {Keyboard.RETURN_SEQUENCE}")
         if (mode == "keyboard"):
             self.mode = mode
-            print("Starting keyboard mode...")
             self.light.flash("white")
             Keyboard.play(self)
         elif (mode == "learning"):
             self.mode = mode
-            print("Starting learning mode...")
             self.light.flashLearningMode()
             self.light.turnOn(self.getCurrentKeyColor())
             Keyboard.play(self)
@@ -125,10 +123,10 @@ class SongController:
                 if (self.correctKeyPlayed()):
                     self.light.turnOff()
                     sleep(0.1)
-                    if (self.getNextSongKey(self.keyIndex) == -1):
-                        print("End of song")
-                        return
                     self.currentKey = self.getNextSongKey(self.keyIndex)
+                    if (self.currentKey == -1):
+                        print("End of song.")
+                        return
                     self.keyIndex += 1
                     self.light.turnOn(self.getCurrentKeyColor())
                     self.gui.updateKeyInfo()
@@ -157,3 +155,4 @@ class SongController:
 
     def cleanup(self):
         Keyboard.cleanup()
+#!/usr/bin/env python3
