@@ -4,6 +4,7 @@
 #         creating the gui, and running the main loop.
 #Developer: Jonathan Coffey
 
+import RPi.GPIO as GPIO
 from songparser import SongParser
 from songcontroller import SongController
 from song import Song
@@ -25,6 +26,7 @@ class PianoApp:
             root = Tk()
             gui = Gui(root, self.controller)
             root.mainloop()
+            GPIO.cleanup()
         else:
             print("NO SONG FILES FOUND")
 
