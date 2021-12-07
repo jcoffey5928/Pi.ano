@@ -7,7 +7,7 @@ import RPi.GPIO as GPIO
 from time import sleep
 
 class Keyboard:
-    KEY_COLORS = {'C5': 'blue', 'D5': 'red', 'E5': 'orange', 'F5': 'pink', 'G5': 'purple'}
+    KEY_COLORS = {'C5': 'green', 'D5': 'red', 'E5': 'orange', 'F5': 'pink', 'G5': 'purple'}
     RETURN_SEQUENCE = ['C5', 'C5', 'C5', 'C5', 'C5']
     KEY_SLEEP = 0.05
     keyPlayed = None
