@@ -71,3 +71,6 @@ class Keyboard:
             prev_KEY3 = KEY3
             prev_KEY4 = KEY4
             prev_KEY5 = KEY5
+    
+    def cleanup():
+        GPIO.cleanup()
