@@ -131,8 +131,8 @@ class SongController:
                     self.keyIndex += 1
                     self.light.turnOn(self.getCurrentKeyColor())
                     self.gui.updateKeyInfo()
-            else:
-                self.gui.update()
+           # else:
+           #     self.gui.update()
     
     def correctKeyPlayed(self):
         return self.currentKey == Keyboard.keyPlayed

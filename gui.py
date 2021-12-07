@@ -50,14 +50,14 @@ class Gui:
         playButton = ttk.Button(buttonFrame, command=self.playSong, text="Play", style="Pl.TButton").grid(row=0, column=0)
         prevButton = ttk.Button(buttonFrame, command=self.prevSong, text="Previous", style="Pr.TButton").grid(row=0, column=1)
         nextButton = ttk.Button(buttonFrame, command=self.nextSong, text="Next", style="N.TButton").grid(row=0, column=2)
-        self.helpButton = ttk.Button(buttonFrame, command=self.playThreeNotes, text="Play 3 Notes", state=DISABLED, style="H.TButton")    
-        self.helpButton.grid(row=1, column=2)
 
     def createModeControlFrame(self):
         modeFrame = ttk.Frame(self.master, style="TFrame")
         modeFrame.pack()
         keyboardButton = ttk.Button(modeFrame, command=self.startKeyboardMode, text="Keyboard Mode", style="KB.TButton").grid(row=1, column=0)
         learningButton = ttk.Button(modeFrame, command=self.startLearningMode, text="Learning Mode", style="KB.TButton").grid(row=1, column=1)
+        self.helpButton = ttk.Button(modeFrame, command=self.playThreeNotes, text="Play 3 Notes", state=DISABLED, style="H.TButton")    
+        self.helpButton.grid(row=1, column=2)
 
     def playSong(self):
         self.controller.playSong()
@@ -91,7 +91,7 @@ class Gui:
         self.updateKeyInfo()
 
     def startLearningMode(self):
-        self.helpButton.state(["!disabled"])
+        #self.helpButton.state(["!disabled"])
         self.controller.playMode("learning")
         self.updateKeyInfo()
         self.helpButton.state(["disabled"])
