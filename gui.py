@@ -95,6 +95,7 @@ class Gui:
         self.controller.playMode("learning")
         self.updateKeyInfo()
         self.helpButton.state(["disabled"])
+        self.update()
     
     def playThreeNotes(self):
         self.controller.playThreeNotes()

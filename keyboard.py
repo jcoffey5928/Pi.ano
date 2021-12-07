@@ -43,28 +43,27 @@ class Keyboard:
             KEY5 = GPIO.input(18)
             #if the last reading was low and this one high, alert us
             if ((not prev_KEY1) and KEY1):
-                print("Played: C5")
                 keyReturnList.append("C5")
                 Keyboard.keyPlayed = "C5"
             elif ((not prev_KEY2) and KEY2):
-                print("Played: D5")
                 keyReturnList.append("D5")
                 Keyboard.keyPlayed = "D5"
             elif ((not prev_KEY3) and KEY3):
-                print("Played: E5")
                 keyReturnList.append("E5")
                 Keyboard.keyPlayed = "E5"
             elif ((not prev_KEY4) and KEY4):
-                print("Played: F5")
                 keyReturnList.append("F5")
                 Keyboard.keyPlayed = "F5"
             elif ((not prev_KEY5) and KEY5):
-                print("Played: G5")
                 keyReturnList.append("G5")
                 Keyboard.keyPlayed = "G5"
             else:
                 Keyboard.keyPlayed = None
 
+            if (Keyboard.keyPlayed == None):
+                print("Key = None")
+            else:
+                print(Keyboard.keyPlayed)
             controller.keyboardUpdate()
             #update previous input
             prev_KEY1 = KEY1
