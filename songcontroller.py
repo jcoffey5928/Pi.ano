@@ -154,4 +154,3 @@ class SongController:
 
     def cleanup(self):
         Keyboard.cleanup()
-#!/usr/bin/env python3
